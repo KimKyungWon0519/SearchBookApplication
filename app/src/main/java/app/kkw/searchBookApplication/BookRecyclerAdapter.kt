@@ -1,11 +1,11 @@
 package app.kkw.searchBookApplication
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 
 class BookRecyclerAdapter(private val dataSet: Array<String>) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
@@ -24,7 +24,9 @@ class BookRecyclerAdapter(private val dataSet: Array<String>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_book, parent, false)
+
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
