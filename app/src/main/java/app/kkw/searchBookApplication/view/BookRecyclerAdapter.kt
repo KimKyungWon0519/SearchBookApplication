@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.kkw.searchBookApplication.R
+import app.kkw.searchBookApplication.model.Book
 
-class BookRecyclerAdapter(private val dataSet: Array<String>) :
+class BookRecyclerAdapter(private val dataSet: Array<Book>) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val thumbnail: ImageView
