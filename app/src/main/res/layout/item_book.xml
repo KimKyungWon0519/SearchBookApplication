@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/TextAppearance.Material3.BodyLarge"
         app:layout_constraintLeft_toLeftOf="@id/title"
-        app:layout_constraintBottom_toBottomOf="@id/imageView2"
-        tools:text="출판일" />
+        app:layout_constraintBottom_toBottomOf="@id/thumbnail"
+        tools:text="@string/publish_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

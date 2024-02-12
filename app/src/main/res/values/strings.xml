@@ -2,4 +2,5 @@
     <string name="app_name">SearchBookApplication</string>
     <string name="search_field_hint">책 이름 검색</string>
     <string name="toolbar_name">책 정보?</string>
+    <string name="publish_date">출판일 : %s</string>
 </resources>
