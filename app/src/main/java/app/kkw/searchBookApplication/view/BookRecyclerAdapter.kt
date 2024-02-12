@@ -23,6 +23,12 @@ class BookRecyclerAdapter(private val books: Array<Book>) :
             author = view.findViewById(R.id.author)
             publishDate = view.findViewById(R.id.publish_date)
         }
+
+        fun bind(book: Book) {
+            title.text = book.title
+            author.text = book.author
+            publishDate.resources.getString(R.string.publish_date, book.publishDate)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,10 +42,6 @@ class BookRecyclerAdapter(private val books: Array<Book>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val book = books[position]
-
-        holder.title.text = book.title
-        holder.author.text = book.author
-        holder.publishDate.resources.getString(R.string.publish_date, book.publishDate)
+        holder.bind(books[position])
     }
 }
