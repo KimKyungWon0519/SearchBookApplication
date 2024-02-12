@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.kkw.searchBookApplication.R
 import app.kkw.searchBookApplication.model.Book
 
-class BookRecyclerAdapter(private val dataSet: Array<Book>) :
+class BookRecyclerAdapter(private val books: Array<Book>) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val thumbnail: ImageView
@@ -36,6 +36,10 @@ class BookRecyclerAdapter(private val dataSet: Array<Book>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val book = books[position]
+
+        holder.title.text = book.title
+        holder.author.text = book.author
+        holder.publishDate.resources.getString(R.string.publish_date, book.publishDate)
     }
 }
