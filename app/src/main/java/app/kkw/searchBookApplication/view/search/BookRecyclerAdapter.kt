@@ -1,4 +1,4 @@
-package app.kkw.searchBookApplication.view
+package app.kkw.searchBookApplication.view.search
 
 import android.view.LayoutInflater
 import android.view.View
