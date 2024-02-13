@@ -20,7 +20,6 @@ class SearchActivity : AppCompatActivity() {
             Book(
                 title = "책 이름 - $it",
                 author = "저자 이름 - $it",
-                publishDate = "$it",
             )
         }
 

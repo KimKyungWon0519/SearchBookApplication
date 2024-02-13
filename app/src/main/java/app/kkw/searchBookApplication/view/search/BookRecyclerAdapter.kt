@@ -12,22 +12,19 @@ import app.kkw.searchBookApplication.model.Book
 class BookRecyclerAdapter(private val books: List<Book>) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val thumbnail: ImageView
-        val title: TextView
-        val author: TextView
-        val publishDate: TextView
+        private val thumbnail: ImageView
+        private val title: TextView
+        private val author: TextView
 
         init {
             thumbnail = view.findViewById(R.id.thumbnail)
             title = view.findViewById(R.id.title)
             author = view.findViewById(R.id.author)
-            publishDate = view.findViewById(R.id.publish_date)
         }
 
         fun bind(book: Book) {
             title.text = book.title
             author.text = book.author
-            publishDate.text = publishDate.resources.getString(R.string.publish_date, book.publishDate)
         }
     }
 
