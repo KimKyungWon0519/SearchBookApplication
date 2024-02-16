@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import app.kkw.searchBookApplication.R
 import app.kkw.searchBookApplication.model.Book
 
-class BookRecyclerAdapter(private val books: List<Book>) :
+class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem: () -> Unit) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, onClickItem: () -> Unit) : RecyclerView.ViewHolder(view) {
         private val thumbnail: ImageView
         private val title: TextView
         private val author: TextView
@@ -20,6 +20,10 @@ class BookRecyclerAdapter(private val books: List<Book>) :
             thumbnail = view.findViewById(R.id.thumbnail)
             title = view.findViewById(R.id.title)
             author = view.findViewById(R.id.author)
+
+            itemView.setOnClickListener {
+                onClickItem()
+            }
         }
 
         fun bind(book: Book) {
@@ -30,8 +34,7 @@ class BookRecyclerAdapter(private val books: List<Book>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_book, parent, false)
-
-        return ViewHolder(view)
+        return ViewHolder(view, onClickItem)
     }
 
     override fun getItemCount(): Int {
