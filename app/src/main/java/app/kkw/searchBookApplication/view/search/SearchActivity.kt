@@ -28,8 +28,8 @@ class SearchActivity : AppCompatActivity() {
         recyclerView.adapter = BookRecyclerAdapter(books, ::onClickBookItem)
     }
 
-    private fun onClickBookItem() : Unit {
-        val intent: Intent = Intent(applicationContext, DetailedInfoActivity::class.java)
+    private fun onClickBookItem() {
+        val intent = Intent(applicationContext, DetailedInfoActivity::class.java)
 
         startActivity(intent)
     }
