@@ -1,9 +1,12 @@
 package app.kkw.searchBookApplication.view.detailedInfo
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import app.kkw.searchBookApplication.R
+import app.kkw.searchBookApplication.model.Book
 
 class DetailedInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +15,9 @@ class DetailedInfoActivity : AppCompatActivity() {
 
         showNavigationIcon()
         onClickNavigationIcon()
+        initializeDetailedInfoOfBook()
     }
+
 
     private fun showNavigationIcon() {
         val toolbar: Toolbar = findViewById(R.id.book_name_toolbar)
@@ -25,6 +30,32 @@ class DetailedInfoActivity : AppCompatActivity() {
 
         toolbar.setNavigationOnClickListener {
             finish()
+        }
+    }
+
+    private fun getBookFromIntent(): Book {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("book", Book::class.java) as Book
+        } else {
+            intent.getParcelableExtra("book") as? Book ?: Book.empty()
+        }
+    }
+
+    private fun initializeDetailedInfoOfBook() {
+        val book: Book = getBookFromIntent()
+
+        val toolbar: Toolbar = findViewById(R.id.book_name_toolbar)
+        val authorTextView: TextView = findViewById(R.id.author)
+        val publisherTextView: TextView = findViewById(R.id.publisher)
+        val publishDateTextView: TextView = findViewById(R.id.publish_date)
+        val discountTextView: TextView = findViewById(R.id.discount)
+
+        with(book) {
+            toolbar.title = title
+            authorTextView.text = author
+            publisherTextView.text = publisher
+            publishDateTextView.text = publishDate
+            discountTextView.text = discount.toString()
         }
     }
 }

@@ -22,14 +22,19 @@ class SearchActivity : AppCompatActivity() {
             Book(
                 title = "책 이름 - $it",
                 author = "저자 이름 - $it",
+                publisher = "출판사 - $it",
+                publishDate = "출간일 - $it",
+                discount = it * 1000
             )
         }
 
         recyclerView.adapter = BookRecyclerAdapter(books, ::onClickBookItem)
     }
 
-    private fun onClickBookItem() {
-        val intent = Intent(applicationContext, DetailedInfoActivity::class.java)
+    private fun onClickBookItem(book: Book) {
+        val intent = Intent(applicationContext, DetailedInfoActivity::class.java).apply {
+            putExtra("book", book)
+        }
 
         startActivity(intent)
     }

@@ -8,13 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.kkw.searchBookApplication.R
 import app.kkw.searchBookApplication.model.Book
+import app.kkw.searchBookApplication.model.isEmpty
 
-class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem: () -> Unit) :
+class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem: (book: Book) -> Unit) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(view: View, onClickItem: () -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, onClickItem: (book: Book) -> Unit) : RecyclerView.ViewHolder(view) {
         private val thumbnail: ImageView
         private val title: TextView
         private val author: TextView
+        private var currentBook = Book.empty()
 
         init {
             thumbnail = view.findViewById(R.id.thumbnail)
@@ -22,13 +24,17 @@ class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem
             author = view.findViewById(R.id.author)
 
             itemView.setOnClickListener {
-                onClickItem()
+                if(currentBook.isEmpty()) return@setOnClickListener
+
+                onClickItem(currentBook)
             }
         }
 
         fun bind(book: Book) {
             title.text = book.title
             author.text = book.author
+
+            currentBook = book
         }
     }
 
