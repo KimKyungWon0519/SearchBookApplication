@@ -6,4 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".view.detailedInfo.DetailedInfoActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/book_name_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:title="책 이름" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/book_name_toolbar"
+        tools:src="@tools:sample/avatars" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/author_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/label_color"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        android:text="@string/author" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toEndOf="@+id/author_label"
+        app:layout_constraintTop_toTopOf="@+id/author_label"
+        tools:text="저자 이름" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/publisher_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@id/author_label"
+        android:textColor="@color/label_color"
+        android:text="@string/publisher" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/publisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toStartOf="@+id/author"
+        app:layout_constraintTop_toTopOf="@+id/publisher_label"
+        tools:text="출판사 이름" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/publish_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@id/publisher_label"
+        android:textColor="@color/label_color"
+        android:text="@string/publish_date" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/publish_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toStartOf="@+id/author"
+        app:layout_constraintTop_toTopOf="@+id/publish_date_label"
+        tools:text="yyyyMMdd" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/discount_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@id/imageView2"
+        android:textColor="@color/label_color"
+        android:text="@string/discount" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toStartOf="@+id/author"
+        app:layout_constraintTop_toTopOf="@+id/discount_label"
+        tools:text="10000" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:text="설명" />
 </androidx.constraintlayout.widget.ConstraintLayout>

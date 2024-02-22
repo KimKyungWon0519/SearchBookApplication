@@ -33,13 +33,4 @@
         style="@style/TextAppearance.Material3.BodyLarge"
         tools:text="저자 이름" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/publish_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/title"
-        app:layout_constraintBottom_toBottomOf="@id/thumbnail"
-        style="@style/TextAppearance.Material3.BodyLarge"
-        tools:text="@string/publish_date" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

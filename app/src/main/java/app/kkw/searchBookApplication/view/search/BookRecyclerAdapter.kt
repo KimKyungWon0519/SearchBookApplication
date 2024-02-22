@@ -8,33 +8,39 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.kkw.searchBookApplication.R
 import app.kkw.searchBookApplication.model.Book
+import app.kkw.searchBookApplication.model.isEmpty
 
-class BookRecyclerAdapter(private val books: List<Book>) :
+class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem: (book: Book) -> Unit) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val thumbnail: ImageView
-        val title: TextView
-        val author: TextView
-        val publishDate: TextView
+    class ViewHolder(view: View, onClickItem: (book: Book) -> Unit) : RecyclerView.ViewHolder(view) {
+        private val thumbnail: ImageView
+        private val title: TextView
+        private val author: TextView
+        private var currentBook = Book.empty()
 
         init {
             thumbnail = view.findViewById(R.id.thumbnail)
             title = view.findViewById(R.id.title)
             author = view.findViewById(R.id.author)
-            publishDate = view.findViewById(R.id.publish_date)
+
+            itemView.setOnClickListener {
+                if(currentBook.isEmpty()) return@setOnClickListener
+
+                onClickItem(currentBook)
+            }
         }
 
         fun bind(book: Book) {
             title.text = book.title
             author.text = book.author
-            publishDate.text = publishDate.resources.getString(R.string.publish_date, book.publishDate)
+
+            currentBook = book
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_book, parent, false)
-
-        return ViewHolder(view)
+        return ViewHolder(view, onClickItem)
     }
 
     override fun getItemCount(): Int {
