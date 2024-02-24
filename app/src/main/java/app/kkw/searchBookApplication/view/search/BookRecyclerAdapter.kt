@@ -9,10 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import app.kkw.searchBookApplication.R
 import app.kkw.searchBookApplication.model.Book
 import app.kkw.searchBookApplication.model.isEmpty
+import okhttp3.internal.notify
 
-class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem: (book: Book) -> Unit) :
+class BookRecyclerAdapter(private val onClickItem: (book: Book) -> Unit) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(view: View, onClickItem: (book: Book) -> Unit) : RecyclerView.ViewHolder(view) {
+    private var books: List<Book> = emptyList()
+
+    class ViewHolder(view: View, onClickItem: (book: Book) -> Unit) :
+        RecyclerView.ViewHolder(view) {
         private val thumbnail: ImageView
         private val title: TextView
         private val author: TextView
@@ -24,7 +28,7 @@ class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem
             author = view.findViewById(R.id.author)
 
             itemView.setOnClickListener {
-                if(currentBook.isEmpty()) return@setOnClickListener
+                if (currentBook.isEmpty()) return@setOnClickListener
 
                 onClickItem(currentBook)
             }
@@ -44,10 +48,16 @@ class BookRecyclerAdapter(private val books: List<Book>, private val onClickItem
     }
 
     override fun getItemCount(): Int {
-       return books.size
+        return books.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(books[position])
+    }
+
+    fun update(books: List<Book>) {
+        this.books = books
+
+        notifyDataSetChanged()
     }
 }
