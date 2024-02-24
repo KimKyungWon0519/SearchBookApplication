@@ -1,15 +1,16 @@
 package app.kkw.searchBookApplication.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Book(
-    val title: String,
-    val author: String,
-    val publisher: String,
-    val publishDate: String,
-    val discount: Int
+    @SerializedName("title") val title: String,
+    @SerializedName("author") val author: String,
+    @SerializedName("publisher") val publisher: String,
+    @SerializedName("pubdate") val publishDate: String,
+    @SerializedName("discount") val discount: Int
 ) : Parcelable {
     companion object {
         fun empty(): Book = Book("", "", "", "", 0)
