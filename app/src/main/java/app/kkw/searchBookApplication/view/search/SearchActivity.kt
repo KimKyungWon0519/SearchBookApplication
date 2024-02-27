@@ -45,7 +45,7 @@ class SearchActivity : AppCompatActivity() {
             } else if (it.isSuccess) {
                 guideText.visibility = View.GONE
                 bookRecyclerView.visibility = View.VISIBLE
-                bookAdapter.update(it.getOrNull()?.books ?: emptyList())
+                bookAdapter.update(it.getOrNull() ?: emptyList())
             }
         }
     }
