@@ -3,10 +3,12 @@ package app.kkw.searchBookApplication.view.detailedInfo
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import app.kkw.searchBookApplication.R
 import app.kkw.searchBookApplication.model.Book
+import com.bumptech.glide.Glide
 
 class DetailedInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +51,7 @@ class DetailedInfoActivity : AppCompatActivity() {
         val publisherTextView: TextView = findViewById(R.id.publisher)
         val publishDateTextView: TextView = findViewById(R.id.publish_date)
         val discountTextView: TextView = findViewById(R.id.discount)
+        val bookImage: ImageView = findViewById(R.id.book_image)
 
         with(book) {
             toolbar.title = title
@@ -56,6 +59,7 @@ class DetailedInfoActivity : AppCompatActivity() {
             publisherTextView.text = publisher
             publishDateTextView.text = publishDate
             discountTextView.text = discount.toString()
+            Glide.with(this@DetailedInfoActivity).load(book.imagePath).into(bookImage)
         }
     }
 }
