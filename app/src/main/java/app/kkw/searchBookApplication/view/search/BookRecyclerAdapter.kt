@@ -1,5 +1,7 @@
 package app.kkw.searchBookApplication.view.search
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import app.kkw.searchBookApplication.R
 import app.kkw.searchBookApplication.model.Book
 import app.kkw.searchBookApplication.model.isEmpty
+import com.bumptech.glide.Glide
 import okhttp3.internal.notify
+import java.net.URL
 
 class BookRecyclerAdapter(private val onClickItem: (book: Book) -> Unit) :
     RecyclerView.Adapter<BookRecyclerAdapter.ViewHolder>() {
@@ -37,6 +41,8 @@ class BookRecyclerAdapter(private val onClickItem: (book: Book) -> Unit) :
         fun bind(book: Book) {
             title.text = book.title
             author.text = book.author
+
+            Glide.with(itemView).load(book.imagePath).into(thumbnail)
 
             currentBook = book
         }
