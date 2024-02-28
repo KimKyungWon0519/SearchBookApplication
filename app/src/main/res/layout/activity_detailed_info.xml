@@ -7,22 +7,31 @@
     tools:context=".view.detailedInfo.DetailedInfoActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/book_name_toolbar"
+        android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:title="책 이름" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/book_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="책 이름" />
 
     <ImageView
         android:id="@+id/book_image"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="140dp"
+        android:layout_height="200dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/book_name_toolbar"
+        app:layout_constraintStart_toStartOf="@id/book_name"
+        app:layout_constraintTop_toBottomOf="@+id/book_name"
         tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -30,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="@color/label_color"
         app:layout_constraintStart_toEndOf="@+id/book_image"
         app:layout_constraintTop_toTopOf="@+id/book_image"
@@ -40,10 +49,9 @@
         android:id="@+id/author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        app:layout_constraintStart_toEndOf="@+id/author_label"
-        app:layout_constraintTop_toTopOf="@+id/author_label"
+        app:layout_constraintTop_toBottomOf="@id/author_label"
+        app:layout_constraintStart_toStartOf="@id/author_label"
         tools:text="저자 이름" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -52,9 +60,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintStart_toEndOf="@+id/book_image"
-        app:layout_constraintTop_toBottomOf="@id/author_label"
+        app:layout_constraintTop_toBottomOf="@id/author"
         android:textColor="@color/label_color"
         android:text="@string/publisher" />
 
@@ -63,8 +71,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        app:layout_constraintStart_toStartOf="@+id/author"
-        app:layout_constraintTop_toTopOf="@+id/publisher_label"
+        app:layout_constraintStart_toStartOf="@+id/publisher_label"
+        app:layout_constraintTop_toBottomOf="@+id/publisher_label"
         tools:text="출판사 이름" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -73,9 +81,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintStart_toEndOf="@+id/book_image"
-        app:layout_constraintTop_toBottomOf="@id/publisher_label"
+        app:layout_constraintTop_toBottomOf="@id/publisher"
         android:textColor="@color/label_color"
         android:text="@string/publish_date" />
 
@@ -84,8 +92,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        app:layout_constraintStart_toStartOf="@+id/author"
-        app:layout_constraintTop_toTopOf="@+id/publish_date_label"
+        app:layout_constraintStart_toStartOf="@+id/publish_date_label"
+        app:layout_constraintTop_toBottomOf="@+id/publish_date_label"
         tools:text="yyyyMMdd" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -94,9 +102,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintStart_toEndOf="@+id/book_image"
-        app:layout_constraintBottom_toBottomOf="@id/book_image"
+        app:layout_constraintTop_toBottomOf="@id/publish_date"
         android:textColor="@color/label_color"
         android:text="@string/discount" />
 
@@ -105,8 +113,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        app:layout_constraintStart_toStartOf="@+id/author"
-        app:layout_constraintTop_toTopOf="@+id/discount_label"
+        app:layout_constraintStart_toStartOf="@+id/discount_label"
+        app:layout_constraintTop_toBottomOf="@+id/discount_label"
         tools:text="10000" />
 
     <com.google.android.material.textview.MaterialTextView

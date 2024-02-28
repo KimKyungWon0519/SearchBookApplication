@@ -11,10 +11,11 @@ data class Book(
     @SerializedName("publisher") val publisher: String,
     @SerializedName("pubdate") val publishDate: String,
     @SerializedName("discount") val discount: Int,
-    @SerializedName("image") val imagePath: String
+    @SerializedName("image") val imagePath: String,
+    @SerializedName("description") val description: String
 ) : Parcelable {
     companion object {
-        fun empty(): Book = Book("", "", "", "", 0, "")
+        fun empty(): Book = Book("", "", "", "", 0, "", "")
     }
 }
 

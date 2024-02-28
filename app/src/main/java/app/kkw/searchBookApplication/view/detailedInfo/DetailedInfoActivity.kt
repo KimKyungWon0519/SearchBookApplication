@@ -22,13 +22,13 @@ class DetailedInfoActivity : AppCompatActivity() {
 
 
     private fun showNavigationIcon() {
-        val toolbar: Toolbar = findViewById(R.id.book_name_toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
     }
 
     private fun onClickNavigationIcon() {
-        val toolbar: Toolbar = findViewById(R.id.book_name_toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         toolbar.setNavigationOnClickListener {
             finish()
@@ -46,20 +46,22 @@ class DetailedInfoActivity : AppCompatActivity() {
     private fun initializeDetailedInfoOfBook() {
         val book: Book = getBookFromIntent()
 
-        val toolbar: Toolbar = findViewById(R.id.book_name_toolbar)
+        val bookName: TextView = findViewById(R.id.book_name)
         val authorTextView: TextView = findViewById(R.id.author)
         val publisherTextView: TextView = findViewById(R.id.publisher)
         val publishDateTextView: TextView = findViewById(R.id.publish_date)
         val discountTextView: TextView = findViewById(R.id.discount)
         val bookImage: ImageView = findViewById(R.id.book_image)
+        val descriptionTextView: TextView = findViewById(R.id.description)
 
         with(book) {
-            toolbar.title = title
+            bookName.text = title
             authorTextView.text = author
             publisherTextView.text = publisher
             publishDateTextView.text = publishDate
             discountTextView.text = discount.toString()
             Glide.with(this@DetailedInfoActivity).load(book.imagePath).into(bookImage)
+            descriptionTextView.text = description
         }
     }
 }
