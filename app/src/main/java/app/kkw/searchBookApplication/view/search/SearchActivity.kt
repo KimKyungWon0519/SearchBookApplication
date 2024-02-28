@@ -1,11 +1,14 @@
 package app.kkw.searchBookApplication.view.search
 
+import android.content.Context
 import android.content.Intent
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
@@ -75,8 +78,13 @@ class SearchActivity : AppCompatActivity() {
         val searchIcon: ImageView = findViewById(R.id.search_icon)
 
         searchIcon.setOnClickListener {
+
             val searchField: TextInputLayout = findViewById(R.id.search_field)
             val bookName = searchField.editText?.text?.toString() ?: ""
+
+            val inputMethodManager: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(searchField.windowToken, 0)
 
             searchViewModel.searchBook(bookName)
         }
